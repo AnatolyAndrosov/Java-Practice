@@ -1,22 +1,20 @@
 package HtmlParser;
 
+import JsonAndCSVParser.DateTimeSerializer;
 import JsonAndCSVParser.StationData;
 import JsonAndCSVParser.StationDepth;
 import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.ser.std.DateSerializer;
 import lombok.*;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "name", "line", "data", "depth", "hasConnection" })
-//@JsonSerialize(using = DateSerializer.class)
+@JsonPropertyOrder({"name", "line", "data", "depth", "hasConnection"})
 public class Station {
 
     private String name;
@@ -24,10 +22,10 @@ public class Station {
     private String lineNumber;
     @JsonProperty("line")
     private String lineName;
+    @JsonSerialize(using = DateTimeSerializer.class)
     private LocalDate data;
     private Double depth;
     private boolean hasConnection;
-
 
 
     public void setName(String name) {
