@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"name", "line", "data", "depth", "hasConnection"})
+@JsonPropertyOrder({"name", "line", "date", "depth", "hasConnection"})
 public class Station {
 
     private String name;
@@ -23,7 +23,7 @@ public class Station {
     @JsonProperty("line")
     private String lineName;
     @JsonSerialize(using = DateTimeSerializer.class)
-    private LocalDate data;
+    private LocalDate date;
     private Double depth;
     private boolean hasConnection;
 
@@ -36,17 +36,16 @@ public class Station {
                                                List<Line> lines,
                                                List<StationData> stationDataList,
                                                List<StationDepth> stationDepthList) {
-//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         for (Station station : stations) {
             for (Line line : lines) {
                 if (station.getLineNumber().equals(line.getNumber())) station.setLineName(line.getName());
             }
             for (StationData stationData : stationDataList) {
                 if (station.getName().equals(stationData.getName()) && !stationData.isUsed()) {
-                    station.setData(stationData.getData());
+                    station.setDate(stationData.getData());
                     stationData.setUsed(true);
                     stationDataList.stream().filter(s -> s.getName().equals(station.getName()))
-                            .filter(s -> s.getData().equals(station.getData()))
+                            .filter(s -> s.getData().equals(station.getDate()))
                             .peek(s -> s.setUsed(true)).collect(Collectors.toList());
                     break;
                 }

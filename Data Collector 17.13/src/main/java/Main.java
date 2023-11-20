@@ -7,8 +7,6 @@ import JsonAndCSVParser.StationData;
 import JsonAndCSVParser.StationDepth;
 import org.jsoup.nodes.Document;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,25 +28,10 @@ public class Main {
         map.put("stations", stations);
 
 
-
         JSONWriter jsonWriter = new JSONWriter();
-        String newJson =  jsonWriter.writeJSONToFile(map);
-        try {
-            FileWriter fileWriter = new FileWriter("data/stations.json");
-            fileWriter.write(newJson);
-            fileWriter.flush();
-            fileWriter.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-
-//        stations.forEach(System.out::println);
-//        System.out.println(stations.size());
-
+        jsonWriter.writeJSONToFile(map, "stations.json");
 
 
     }
-
 
 }

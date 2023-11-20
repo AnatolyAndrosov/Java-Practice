@@ -19,6 +19,7 @@ public class StationData {
         this.data = data;
         this.isUsed = isUsed;
     }
+
     public static List<StationData> getStationDataList(List<String> foundedFiles) {
         List<StationData> stationDataList = new ArrayList<>();
         for (String file : foundedFiles) {

@@ -23,6 +23,7 @@ public class StationDepth {
     public void setName(String name) {
         this.name = name.replace("ё", "е");
     }
+
     public static List<StationDepth> getStationDepthList(List<String> foundedFiles) {
         List<StationDepth> stationDepthList = new ArrayList<>();
         for (String file : foundedFiles) {

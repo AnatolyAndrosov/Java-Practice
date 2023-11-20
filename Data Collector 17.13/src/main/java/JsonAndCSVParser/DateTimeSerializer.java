@@ -22,6 +22,5 @@ public class DateTimeSerializer extends StdSerializer<LocalDate> {
                           SerializerProvider serializerProvider) throws IOException {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         jsonGenerator.writeString(formatter.format(localDate));
-
     }
 }
