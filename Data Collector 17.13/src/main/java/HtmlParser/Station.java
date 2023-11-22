@@ -46,7 +46,7 @@ public class Station {
                     stationData.setUsed(true);
                     stationDataList.stream().filter(s -> s.getName().equals(station.getName()))
                             .filter(s -> s.getData().equals(station.getDate()))
-                            .peek(s -> s.setUsed(true)).collect(Collectors.toList());
+                            .forEach(s -> s.setUsed(true));
                     break;
                 }
             }
