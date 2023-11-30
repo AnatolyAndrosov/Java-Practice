@@ -23,19 +23,4 @@ public class Course {
     private int price;
     @Column(name = "price_per_hour")
     private float pricePerHour;
-
-    @Override
-    public String toString() {
-        return "Course{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", duration=" + duration +
-                ", type=" + type +
-                ", description='" + description + '\'' +
-                ", teacherId=" + teacherId +
-                ", studentsCount=" + studentsCount +
-                ", price=" + price +
-                ", pricePerHour=" + pricePerHour +
-                '}';
-    }
 }
