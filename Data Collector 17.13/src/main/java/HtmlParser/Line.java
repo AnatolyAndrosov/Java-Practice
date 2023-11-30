@@ -8,7 +8,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
-@JsonPropertyOrder({"number", "mame"})
+@JsonPropertyOrder({"number", "name"})
 public class Line {
 
     public static List<Line> lineList = new ArrayList<>();
