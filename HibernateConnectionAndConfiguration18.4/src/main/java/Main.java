@@ -16,7 +16,7 @@ public class Main {
         Session session = sessionFactory.openSession();
 
         Course course = session.get(Course.class, 1);
-        System.out.println(course.getName());
+        System.out.println(course);
         sessionFactory.close();
     }
 }
