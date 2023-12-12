@@ -2,6 +2,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "Courses")
 @Setter
@@ -23,4 +25,12 @@ public class Course {
     private int price;
     @Column(name = "price_per_hour")
     private float pricePerHour;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "subscriptions",
+            joinColumns = {@JoinColumn(name = "course_id")},
+            inverseJoinColumns = {@JoinColumn(name = "student_id")})
+    private List<Student> students;
+
+
 }
