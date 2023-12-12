@@ -15,8 +15,8 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private CoursesType type;
     private String description;
-    @Column(name = "teacher_id")
-    private int teacherId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Teacher teacher;
 
     @Column(name = "students_count")
     private int studentsCount;
