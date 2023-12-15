@@ -24,11 +24,13 @@ public class Main {
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery<Course> query = builder.createQuery(Course.class);
         Root<Course> root = query.from(Course.class);
-        query.select(root);
-        List<Course> courseList = session.createQuery(query).getResultList();
+//        query.select(root);
+        query.select(root).where(builder.greaterThan(root.<Integer>get("price"), 100000))
+                .orderBy(builder.desc(root.get("price")));
+        List<Course> courseList = session.createQuery(query).setMaxResults(5).getResultList();
 
         for (Course course : courseList) {
-            System.out.println(course.getName() + "   " + course.getTeacher().getName());
+            System.out.println(course.getName() + "---" + course.getPrice());
         }
 
         sessionFactory.close();
