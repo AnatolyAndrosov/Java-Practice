@@ -27,8 +27,8 @@ public class Main {
         query.select(root);
         List<Course> courseList = session.createQuery(query).getResultList();
 
-        for(Course course : courseList) {
-            System.out.println(course.getName());
+        for (Course course : courseList) {
+            System.out.println(course.getName() + "   " + course.getTeacher().getName());
         }
 
         sessionFactory.close();

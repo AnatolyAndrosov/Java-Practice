@@ -17,7 +17,7 @@ public class Course {
     @Enumerated(EnumType.STRING)
     private CoursesType type;
     private String description;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Teacher teacher;
 
     @Column(name = "students_count", nullable = true)
