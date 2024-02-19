@@ -17,6 +17,7 @@ public class Main {
         File[] files = srcDir.listFiles();
 
         try {
+            assert files != null;
             for (File file : files) {
                 BufferedImage image = ImageIO.read(file);
                 if (image == null) {
