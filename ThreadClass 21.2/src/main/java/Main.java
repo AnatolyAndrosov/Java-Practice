@@ -15,18 +15,39 @@ public class Main {
         long start = System.currentTimeMillis();
 
         File[] files = srcDir.listFiles();
-        assert files != null;
-        int middle = files.length / 2;
 
-        File[] files1 = new File[middle];
-        System.arraycopy(files, 0, files1, 0, files1.length);
-        ImageResizer resizer1 = new ImageResizer(files1, newWidth, dstFolder, start);
-        resizer1.start();
+        try {
+            assert files != null;
+            for (File file : files) {
+                BufferedImage image = ImageIO.read(file);
+                if (image == null) {
+                    continue;
+                }
+                int newHeight = (int) Math.round(
+                        (double) image.getHeight() / (image.getWidth()
+                                / (double) newWidth));
+                BufferedImage newImage = new BufferedImage(newWidth,
+                        newHeight, BufferedImage.TYPE_INT_RGB);
 
-        File[] files2 = new File[files.length - middle];
-        System.arraycopy(files, files1.length, files2, 0, files2.length);
-        ImageResizer resizer2 = new ImageResizer(files2, newWidth, dstFolder, start);
-        resizer2.start();
+                int widthStep = image.getWidth() / newWidth;
+                int heightStep = image.getHeight() / newHeight;
+
+                for (int x = 0; x < newWidth; x++) {
+                    for (int y = 0; y < newHeight; y++) {
+                        int rgb = image.getRGB(x * widthStep,
+                                y * heightStep);
+                        newImage.setRGB(x, y, rgb);
+                    }
+                }
+
+                File newFile = new File(dstFolder + "/" + file.getName());
+                ImageIO.write(newImage, "jpg", newFile);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        System.out.println("Duration: " + (System.currentTimeMillis() - start));
 
     }
 }
