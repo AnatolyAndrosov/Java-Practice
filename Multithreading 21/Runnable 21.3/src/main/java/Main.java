@@ -1,5 +1,3 @@
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.File;
 
 public class Main {
@@ -21,12 +19,18 @@ public class Main {
         File[] files1 = new File[middle];
         System.arraycopy(files, 0, files1, 0, files1.length);
         ImageResizer resizer1 = new ImageResizer(files1, newWidth, dstFolder, start);
-        resizer1.start();
+        new Thread(resizer1).start();
 
         File[] files2 = new File[files.length - middle];
         System.arraycopy(files, files1.length, files2, 0, files2.length);
         ImageResizer resizer2 = new ImageResizer(files2, newWidth, dstFolder, start);
-        resizer2.start();
+        new Thread(resizer2).start();
+
+        new Thread(() -> {
+            for(int i = 0; i < 100000; i++) {
+                System.out.println(i);
+            }
+        }).start();
 
     }
 }
