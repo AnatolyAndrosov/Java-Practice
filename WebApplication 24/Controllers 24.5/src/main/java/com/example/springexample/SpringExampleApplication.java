@@ -7,14 +7,7 @@ import org.springframework.context.ApplicationContext;
 @SpringBootApplication
 public class SpringExampleApplication {
     public static void main(String[] args) {
-//        SpringApplication.run(SpringExampleApplication.class, args);
         ApplicationContext context = SpringApplication.run(SpringExampleApplication.class, args);
         String[] beansNames = context.getBeanDefinitionNames();
-        System.out.println("Количество бинов " + beansNames.length);
-//        for (String name : beansNames) {
-//            System.out.println(name);
-//        }
-
-
     }
 }
