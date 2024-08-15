@@ -1,5 +1,7 @@
 package com.example.springexample;
 
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -13,5 +15,15 @@ public class BeanOne {
 
     public void sayBeanOne() {
         System.out.println("Я - бин номер один, яху!");
+    }
+
+    @PostConstruct
+    public void postConstruct() {
+        System.out.println("Вызов метода postConstruct");
+    }
+
+    @PreDestroy
+    public void preDestroy() {
+        System.out.println("Вызов метода preDestroy");
     }
 }
