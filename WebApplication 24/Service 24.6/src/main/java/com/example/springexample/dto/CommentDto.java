@@ -1,4 +1,4 @@
-package com.example.springexample.springexample.dto;
+package com.example.springexample.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

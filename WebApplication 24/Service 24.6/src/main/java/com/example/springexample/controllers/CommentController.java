@@ -1,7 +1,7 @@
-package com.example.springexample.springexample.controllers;
+package com.example.springexample.controllers;
 
-import com.example.springexample.springexample.dto.CommentDto;
-import com.example.springexample.springexample.services.CommentCRUDService;
+import com.example.springexample.dto.CommentDto;
+import com.example.springexample.services.CommentCRUDService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;

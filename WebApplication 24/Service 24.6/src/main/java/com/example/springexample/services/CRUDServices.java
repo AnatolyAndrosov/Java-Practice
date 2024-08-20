@@ -1,4 +1,4 @@
-package com.example.springexample.springexample.services;
+package com.example.springexample.services;
 
 import java.util.Collection;
 
