@@ -32,7 +32,8 @@ public class CommentController {
 
     @PutMapping("/{id}")
     public void updateComment(@PathVariable Integer id, @RequestBody CommentDto commentDto) {
-        commentsService.update(id, commentDto);
+        commentDto.setId(id);
+        commentsService.update(commentDto);
     }
 
     @DeleteMapping("/{id}")
