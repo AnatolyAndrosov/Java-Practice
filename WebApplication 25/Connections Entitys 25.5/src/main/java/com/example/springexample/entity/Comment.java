@@ -14,10 +14,14 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @Column(name = "text")
     private String text;
-    @Column(name = "author")
-    private  String author;
+
+    @ManyToOne
+    @JoinColumn(name = "author_id")
+    private Author author;
+
     @CreationTimestamp
     @Column(name = "creation_time")
     private LocalDateTime time;
