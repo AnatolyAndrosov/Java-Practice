@@ -64,7 +64,7 @@ public class CommentCRUDService implements CRUDServices<CommentDto>{
         CommentDto commentDto = new CommentDto();
         commentDto.setId(comment.getId());
         commentDto.setText(comment.getText());
-        commentDto.setAuthorId(AuthorCRUDService.mapToDto(comment.getAuthor()).getId());
+        commentDto.setAuthorId(comment.getAuthor().getId());
         return commentDto;
     }
 
