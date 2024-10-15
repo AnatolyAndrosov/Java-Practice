@@ -54,7 +54,7 @@ public class AuthorCRUDService implements CRUDServices<AuthorDto> {
         author.setId(authorDto.getId());
         author.setFirstName(authorDto.getFirstName());
         author.setLastName(authorDto.getLastName());
-        author.setRating(author.getRating());
+        author.setRating(authorDto.getRating());
         author.setComments(authorDto.getComments()
                 .stream()
                 .map(CommentCRUDService::mapToEntity)
