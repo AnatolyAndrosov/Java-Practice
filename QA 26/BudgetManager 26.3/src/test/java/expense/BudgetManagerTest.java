@@ -5,18 +5,26 @@ import expense.dto.Income;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
+@ExtendWith(MockitoExtension.class)
 public class BudgetManagerTest {
     private BudgetManager manager;
 
     @BeforeEach
     public void setUp() {
-        manager = new BudgetManager();
+        OldSystemConnectionService service = Mockito.mock(OldSystemConnectionService.class);
+        when(service.getLastBalance()).thenReturn(100);
+        manager = new BudgetManager(service);
     }
 
     @Test
@@ -44,7 +52,7 @@ public class BudgetManagerTest {
         manager.addIncome(income);
         Expense expense = new Expense(new BigDecimal("200"), "Обед");
         manager.addExpense(expense);
-        assertEquals(new BigDecimal("800"), manager.getBalance());
+        assertEquals(new BigDecimal("900"), manager.getBalance());
     }
 
     @Test
