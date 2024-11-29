@@ -1,4 +1,4 @@
-package com.example.springexample.services;
+package com.example.springexample;
 
 import com.example.springexample.dto.AuthorDto;
 import com.example.springexample.entity.Author;

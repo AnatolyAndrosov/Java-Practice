@@ -11,5 +11,5 @@ public class AuthorDto {
     private String firstName;
     private String lastName;
     private Long rating;
-    private List<CommentDto> comments;
+    private List<CommentDto> comments = List.of();
 }

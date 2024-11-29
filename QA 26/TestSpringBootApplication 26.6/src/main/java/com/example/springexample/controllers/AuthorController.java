@@ -1,7 +1,7 @@
 package com.example.springexample.controllers;
 
 import com.example.springexample.dto.AuthorDto;
-import com.example.springexample.services.AuthorCRUDService;
+import com.example.springexample.AuthorCRUDService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
